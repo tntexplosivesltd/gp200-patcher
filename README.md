@@ -29,11 +29,23 @@ you download the modified image client-side.
 
 You select the patched firmware file, the editor shows your GP-200 as connected, a progress bar appears for a moment and then disappears. Or the device stays in update mode forever.
 
-Before anything else, check that Valeton's own firmware still updates your unit. Load Valeton's unmodified V1.8.0 file in the updater and let it run. If that does not work either, the problem is with the updater or the connection rather than with the patched file, and that needs sorting out first.
+Before anything else, check that Valeton's own firmware still updates your unit. Load Valeton's unmodified V1.8.0 file in the updater and let it run. If that does not work either, the problem is with the updater or the connection rather than with the patched file, and that needs sorting out first. Step 1 below is the most common reason for that.
 
 Then work through these in order.
 
-**1. Check which model you have.**
+**1. If you are on Windows 11, check this first.**
+
+Valeton's editor has a known problem on Windows 11. It can fail to update firmware, and in the worst case it leaves the pedal stuck on the update screen. This affects Valeton's own firmware too, so it is not caused by these mods, and it will stop any firmware from loading.
+
+Windows 10 and macOS are not affected.
+
+Valeton's answer is to swap a driver in Device Manager. **Be careful: the GP-200 appears there as more than one device, and only one of them should be changed.** The community write-up is more complete than the official instructions:
+
+<https://www.facebook.com/groups/1080579552678581/permalink/2192962678106924/>
+
+If your pedal is already stuck on the update screen, the most reliable fix is to borrow a Mac or a Windows 10 PC and run the update from there.
+
+**2. Check which model you have.**
 
 Look at the label on your unit.
 
@@ -41,9 +53,9 @@ These mods work on the **GP-200**, and that includes the **GP-200R** and **GP-20
 
 They do **not** work on the **GP-200LT** or the **GP-200JR**. Those are separate products with their own firmware, and there is no way to make these mods fit them.
 
-This is the most common cause. The editor reads the model name out of the firmware file and compares it against the unit you have plugged in. A file built for a GP-200 is refused by an LT or a JR, and that refusal looks exactly like the problem above.
+The editor reads the model name out of the firmware file and compares it against the unit you have plugged in. A file built for a GP-200 is refused by an LT or a JR, and that refusal looks exactly like the problem above.
 
-**2. Check the file name.**
+**3. Check the file name.**
 
 The patcher names the file it builds after a fingerprint of that file's own contents, so the name tells you what you ended up with. For the tuner release, it should be exactly:
 
@@ -61,7 +73,7 @@ What you download is the `.zip`. You have to open it and take the `.bin` out fir
 
 Also compare the `.bin` and never the `.zip` if you are checking it against anyone else's. The zip records the time you built it, so no two people get the same zip even when the firmware inside is identical.
 
-**3. Check the file is complete.**
+**4. Check the file is complete.**
 
 Right-click the `.bin` file, choose **Properties**, and look at **Size**.
 
@@ -75,7 +87,7 @@ If you are comfortable with a command prompt, this prints the file's full finger
 certutil -hashfile "patched_firmware_name_here.bin" SHA256
 ```
 
-**4. Build the file yourself. Do not use one someone sent you.**
+**5. Build the file yourself. Do not use one someone sent you.**
 
 If somebody passed you a finished `.bin`, set it aside and make your own with the patcher page.
 
@@ -84,6 +96,7 @@ The patcher checks your firmware before it changes anything, so building it your
 Always start from a fresh, unmodified copy of GP-200 firmware V1.8.0. Never patch a file that has already been patched.
 
 ### Details we want to know
+- which operating system you are on, and if Windows, whether 10 or 11
 - the model name from the label on the unit
 - the patched .bin filename and size in bytes from Properties
 - the editor version, from its About screen
@@ -92,3 +105,5 @@ Always start from a fresh, unmodified copy of GP-200 firmware V1.8.0. Never patc
 ### If the unit will not start up
 
 Update mode lives in a part of the GP-200 that these mods never touch, so a failed or interrupted update can always be undone. Put the unit back into update mode with the boot-select button combination and flash Valeton's own firmware with the official editor.
+
+**If Valeton's own firmware will not load either, and you are on Windows 11, the problem is your PC and not your pedal.** See step 1. Borrowing a Mac or a Windows 10 machine to finish the update is the most reliable way out, and it is what Valeton themselves recommend.
