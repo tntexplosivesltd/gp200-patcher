@@ -79,13 +79,19 @@ Right-click the `.bin` file, choose **Properties**, and look at **Size**.
 
 It must be exactly **6,451,048 bytes**. Windows shows this as `6.15 MB (6,451,048 bytes)`. Read the number in brackets, not the rounded one.
 
-If it is any other number, the file was damaged while downloading or unzipping. Unzip it again from the `.zip` you downloaded, or build it again.
-
-If you are comfortable with a command prompt, this prints the file's full fingerprint, which the patcher page also showed you when it built the file:
+**The size on its own is not enough.** A file can be exactly the right length and still have damaged contents, and the updater may reject it without showing you any error at all. To check every byte, open a command prompt and run:
 
 ```
-certutil -hashfile "patched_firmware_name_here.bin" SHA256
+certutil -hashfile "GP-200_V1.8.0_f5afac84.bin" SHA256
 ```
+
+For the tuner release it must print exactly:
+
+```
+f5afac8457eeae460a01a47fe3f553d939b99133d7f8dccbdf5ea3ded89da67c
+```
+
+If the size or the fingerprint is different, the file was damaged on its way to your disk. Unzip it again from the `.zip` you downloaded, or build it again. If it keeps coming out wrong, an antivirus tool or a browser extension may be altering it.
 
 **5. Build the file yourself. Do not use one someone sent you.**
 
@@ -99,6 +105,7 @@ Always start from a fresh, unmodified copy of GP-200 firmware V1.8.0. Never patc
 - which operating system you are on, and if Windows, whether 10 or 11
 - the model name from the label on the unit
 - the patched .bin filename and size in bytes from Properties
+- the fingerprint from the `certutil` command in step 4
 - the editor version, from its About screen
 - whether you built the file yourself or someone sent it to you
 
@@ -107,3 +114,20 @@ Always start from a fresh, unmodified copy of GP-200 firmware V1.8.0. Never patc
 Update mode lives in a part of the GP-200 that these mods never touch, so a failed or interrupted update can always be undone. Put the unit back into update mode with the boot-select button combination and flash Valeton's own firmware with the official editor.
 
 **If Valeton's own firmware will not load either, and you are on Windows 11, the problem is your PC and not your pedal.** See step 1. Borrowing a Mac or a Windows 10 machine to finish the update is the most reliable way out, and it is what Valeton themselves recommend.
+
+### Helping us investigate
+
+If you have worked through the steps above and your unit still will not update, a recording of the USB traffic between the editor and the pedal would help us pin down what is happening. If you do not mind a bit of setup, it is more useful than anything else you could send us.
+
+What is most useful is **two recordings, made one after the other in the same sitting**: first the failed attempt with the patched file, then a normal update with Valeton's own file. The pair is the point. On its own, the failed recording shows where things stop, but not whether the working one would have behaved any differently at that moment.
+
+1. Install Wireshark from <https://www.wireshark.org>, making sure the **USBPcap** component is ticked. It will ask to reboot.
+2. Open Wireshark. Before you start recording, open the settings for the USBPcap interface and **tick only the GP-200**. Left alone, USBPcap records every device on the same USB hub, which could include your keyboard. Only the pedal is wanted here.
+3. Record the patched-file attempt, starting before you press Update and continuing until it is clear that nothing is going to happen. Save it as `modded.pcapng`.
+4. Then record a normal update with Valeton's own firmware the same way. Once the progress bar is clearly moving, you can stop recording after about twenty seconds. Stopping the recording does not interrupt the update, so **let the update itself finish**. Save it as `stock.pcapng`.
+5. Zip both files. They compress to roughly a tenth of their size. If the zip is still large, ten seconds of the working update is plenty.
+6. Open an issue at <https://github.com/tntexplosivesltd/gp200-patcher/issues> and say you have captures. **Please do not attach them to the issue.** We will reply there with somewhere private to send them.
+
+Never power off or unplug the pedal during an update.
+
+Captures are raw data and hard to check over before it is out in the open, which is why they are not posted publicly. They will be deleted once the question is answered.
