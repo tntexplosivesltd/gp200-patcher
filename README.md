@@ -4,7 +4,7 @@ A self-contained, offline browser tool for applying reverse-engineered custom
 firmware mods to a [Valeton GP-200](https://valetonmusic.com/) multi-effects
 pedal.
 
-Read the writeup: [gp200-reversing.hashnode.dev](https://gp200-reversing.hashnode.dev)
+Read the writeup: [gp200-reversing.hashnode.dev](https://gp200-reversing.hashnode.dev/the-front-panel-and-a-tuner-that-actually-locks)
 
 ## What this is
 
@@ -27,7 +27,7 @@ you download the modified image client-side.
 
 ### The update never starts
 
-You select the patched firmware file, the editor shows your GP-200 as connected with an Update button, but pressing Update just takes you back to the file-select screen. Or a progress bar appears for a moment and then disappears. Meanwhile Valeton's own firmware file updates the unit normally.
+You select the patched firmware file, the editor shows your GP-200 as connected, a progress bar appears for a moment and then disappears. Or the device stays in update mode forever.
 
 Before anything else, check that Valeton's own firmware still updates your unit. Load Valeton's unmodified V1.8.0 file in the updater and let it run. If that does not work either, the problem is with the updater or the connection rather than with the patched file, and that needs sorting out first.
 
@@ -35,7 +35,7 @@ Then work through these in order.
 
 **1. Check which model you have.**
 
-Look at the label on the underside of your unit.
+Look at the label on your unit.
 
 These mods work on the **GP-200**, and that includes the **GP-200R** and **GP-200X**, which are the same pedal in different colours.
 
@@ -69,6 +69,12 @@ It must be exactly **6,451,048 bytes**. Windows shows this as `6.15 MB (6,451,04
 
 If it is any other number, the file was damaged while downloading or unzipping. Unzip it again from the `.zip` you downloaded, or build it again.
 
+If you are comfortable with a command prompt, this prints the file's full fingerprint, which the patcher page also showed you when it built the file:
+
+```
+certutil -hashfile "patched_firmware_name_here.bin" SHA256
+```
+
 **4. Build the file yourself. Do not use one someone sent you.**
 
 If somebody passed you a finished `.bin`, set it aside and make your own with the patcher page.
@@ -77,20 +83,11 @@ The patcher checks your firmware before it changes anything, so building it your
 
 Always start from a fresh, unmodified copy of GP-200 firmware V1.8.0. Never patch a file that has already been patched.
 
-### There are no logs to send
-
-The editor does not keep a log file, so there is nothing to dig out when an update fails. If the three checks above do not explain it, the useful details are:
-
-- the model name from the label on the underside of the unit
-- the size in bytes from Properties
+### Details we want to know
+- the model name from the label on the unit
+- the patched .bin filename and size in bytes from Properties
 - the editor version, from its About screen
 - whether you built the file yourself or someone sent it to you
-
-If you are comfortable with a command prompt, this prints the file's full fingerprint, which the patcher page also showed you when it built the file:
-
-```
-certutil -hashfile "yourfile.bin" SHA256
-```
 
 ### If the unit will not start up
 
