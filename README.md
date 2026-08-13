@@ -41,13 +41,13 @@ If Valeton's own firmware **does** load and only the patched file fails, start a
 
 Press and hold **BACK** and **SAVE** together while powering up the unit. Part way through the boot splash screen it will enter the factory QC screen. One of the lines on it reads `Boot:`.
 
+This screen is totally safe. To leave it, either press BACK and SAVE together again, or power cycle the unit.
+
 If it says **V0.0.5 or newer**, use the newest patcher release, "Tuner mod v2" or later. Earlier releases changed a version label inside the firmware file, and units with newer boot software refuse an update when that label has been changed. They refuse it silently, so the editor shows no error and the pedal is left sitting on the update screen.
 
-This is confirmed, not a guess: six people who could not flash v1 have all flashed v2 successfully, on units reporting Boot V0.0.5 and V0.0.6. If you are on V0.0.5 or newer and you used an older release, this is almost certainly what happened, and v2 fixes it.
+This is confirmed, several users who could not flash v1 have all flashed v2 successfully, on units reporting Boot V0.0.5 and V0.0.6. If you are on V0.0.5 or newer and you used an older release, this is almost certainly what happened, and v2 fixes it.
 
 If it says **V0.0.3**, this is not your problem. Go on to the next step.
-
-This screen is totally safe. To leave it, either press BACK and SAVE together again, or power cycle the unit.
 
 **2. If you are on Windows 11, check this first.**
 
@@ -97,17 +97,29 @@ Right-click the `.bin` file, choose **Properties**, and look at **Size**.
 
 It must be exactly **6,451,048 bytes**. Windows shows this as `6.15 MB (6,451,048 bytes)`. Read the number in brackets, not the rounded one.
 
-**The size on its own is not enough.** A file can be exactly the right length and still have damaged contents, and the updater may reject it without showing you any error at all. To check every byte, open a command prompt and run:
+**The size on its own is not enough.** A file can be exactly the right length and still have damaged contents, and the updater may reject it without showing you any error at all. To check every byte, run the command below for your system.
+
+**On Windows**, open a command prompt and run:
 
 ```
 certutil -hashfile "GP-200_V1.8.0_414aa9a2.bin" SHA256
 ```
 
-For the tuner release it must print exactly:
+**On macOS**, open Terminal, which is in Applications then Utilities, and run:
+
+```
+shasum -a 256 "GP-200_V1.8.0_414aa9a2.bin"
+```
+
+Rather than typing the file name, you can type `shasum -a 256 ` with a space after it and then drag the `.bin` file from Finder into the Terminal window. That fills in the full path for you and avoids typing mistakes.
+
+Either way, for the tuner release the long string it prints must be exactly:
 
 ```
 414aa9a2d29599138a2c74a3d1851332071a046c81a0477908f7b820f23b43b2
 ```
+
+The two commands lay their output out differently. `certutil` prints a line of its own above and below the fingerprint, and `shasum` prints the fingerprint followed by the file name on the same line. Neither matters. The only thing to compare is the long string of letters and numbers.
 
 If the size or the fingerprint is different, the file was damaged on its way to your disk. Unzip it again from the `.zip` you downloaded, or build it again. If it keeps coming out wrong, an antivirus tool or a browser extension may be altering it.
 
