@@ -41,7 +41,9 @@ If Valeton's own firmware **does** load and only the patched file fails, start a
 
 Press and hold **BACK** and **SAVE** together while powering up the unit. Part way through the boot splash screen it will enter the factory QC screen. One of the lines on it reads `Boot:`.
 
-If it says **V0.0.5 or newer**, use the newest patcher release, "Tuner mod v2" or later. Earlier releases changed a version label inside the firmware file, and units with newer boot software appear to refuse an update when that label has been changed. They refuse it silently, so the editor shows no error and the pedal is left sitting on the update screen.
+If it says **V0.0.5 or newer**, use the newest patcher release, "Tuner mod v2" or later. Earlier releases changed a version label inside the firmware file, and units with newer boot software refuse an update when that label has been changed. They refuse it silently, so the editor shows no error and the pedal is left sitting on the update screen.
+
+This is confirmed, not a guess: six people who could not flash v1 have all flashed v2 successfully, on units reporting Boot V0.0.5 and V0.0.6. If you are on V0.0.5 or newer and you used an older release, this is almost certainly what happened, and v2 fixes it.
 
 If it says **V0.0.3**, this is not your problem. Go on to the next step.
 
@@ -128,11 +130,9 @@ Always start from a fresh, unmodified copy of GP-200 firmware V1.8.0. Never patc
 
 **A picture of the factory QC screen.** Press and hold **BACK** and **SAVE** together while powering up the unit. Part way through the boot splash screen it will enter the factory QC screen.
 
-A photo of the whole screen is much more useful than typing the `Boot:` line out on its own. The screen reports several other version numbers alongside it, and we are still working out which of them matter, so it is better to have all of them than to find out later that we asked for the wrong one.
+A photo of the whole screen is much more useful than typing the `Boot:` line out on its own. The screen reports several other version numbers alongside it, so it is better to have all of them than to find out later that we asked for the wrong one.
 
 This screen is totally safe. To leave it, either press BACK and SAVE together again, or power cycle the unit.
-
-**This is worth sending even if the mod worked perfectly for you.** So far every QC screen we have has come from someone it failed for, which makes it hard to tell whether the pattern we think we are seeing is real. A screen from a unit that updated with no trouble at all is genuinely one of the most useful things anyone could send us right now.
 
 ### If the unit will not start up
 
@@ -142,7 +142,9 @@ Update mode lives in a part of the GP-200 that these mods never touch, so a fail
 
 ### Helping us investigate
 
-**Start with a photo of the factory QC screen.** Press and hold **BACK** and **SAVE** together while powering up the unit, and it will enter the QC screen part way through the boot splash. It is safe, and you leave it by pressing the same two buttons again or power cycling. That one picture takes a minute, needs nothing installed, and tells us more per minute of your time than anything else on this page. Please send one even if your update worked perfectly, because so far almost every screen we have has come from a unit that failed, and that makes the pattern much harder to read.
+The version-label problem described in step 1 is solved, so if that was your symptom, the fix is simply to use the newest release. What follows is for anyone whose unit still will not update after working through the steps above.
+
+**Start with a photo of the factory QC screen.** Press and hold **BACK** and **SAVE** together while powering up the unit, and it will enter the QC screen part way through the boot splash. It is safe, and you leave it by pressing the same two buttons again or power cycling. That one picture takes a minute, needs nothing installed, and tells us more per minute of your time than anything else on this page.
 
 Open an issue at <https://github.com/tntexplosivesltd/gp200-patcher/issues> and attach it there. Unlike the captures below, the QC screen is fine to post publicly. It reports version numbers and live readings from the controls, and nothing that identifies you or your unit.
 
