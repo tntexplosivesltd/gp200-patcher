@@ -45,7 +45,7 @@ This screen is totally safe. To leave it, either press BACK and SAVE together ag
 
 If it says **V0.0.5 or newer**, use the newest patcher release, "Tuner mod v2" or later. Earlier releases changed a version label inside the firmware file, and units with newer boot software refuse an update when that label has been changed. They refuse it silently, so the editor shows no error and the pedal is left sitting on the update screen.
 
-This is confirmed, several users who could not flash v1 have all flashed v2 successfully, on units reporting Boot V0.0.5 and V0.0.6. If you are on V0.0.5 or newer and you used an older release, this is almost certainly what happened, and v2 fixes it.
+This is confirmed: several users who could not flash v1 have all flashed v2 successfully, on units reporting Boot V0.0.5 and V0.0.6. If you are on V0.0.5 or newer and you used an older release, this is almost certainly what happened, and v2 fixes it.
 
 If it says **V0.0.3**, this is not your problem. Go on to the next step.
 
