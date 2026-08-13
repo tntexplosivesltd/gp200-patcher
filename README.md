@@ -144,7 +144,9 @@ Update mode lives in a part of the GP-200 that these mods never touch, so a fail
 
 **Start with a photo of the factory QC screen.** Press and hold **BACK** and **SAVE** together while powering up the unit, and it will enter the QC screen part way through the boot splash. It is safe, and you leave it by pressing the same two buttons again or power cycling. That one picture takes a minute, needs nothing installed, and tells us more per minute of your time than anything else on this page. Please send one even if your update worked perfectly, because so far almost every screen we have has come from a unit that failed, and that makes the pattern much harder to read.
 
-Open an issue at <https://github.com/tntexplosivesltd/gp200-patcher/issues> and attach it there. Unlike the captures below, the QC screen is fine to post publicly, though if anything on yours looks like a serial number, feel free to cover it first.
+Open an issue at <https://github.com/tntexplosivesltd/gp200-patcher/issues> and attach it there. Unlike the captures below, the QC screen is fine to post publicly. It reports version numbers and live readings from the controls, and nothing that identifies you or your unit.
+
+The lines we are most interested in are `HW`, `HW INFO`, `FW` and `BOOT`, on the left hand side. A photo of the whole screen is still better than those four typed out, because it keeps everything else in view.
 
 If you are willing to go further, a recording of the USB traffic between the editor and the pedal is the most detailed thing you could send us. It takes a bit of setup, so it is worth doing only if your unit still will not update after the steps above.
 
