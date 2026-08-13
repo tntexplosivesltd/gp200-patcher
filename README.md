@@ -118,13 +118,21 @@ The patcher checks your firmware before it changes anything, so building it your
 Always start from a fresh, unmodified copy of GP-200 firmware V1.8.0. Never patch a file that has already been patched.
 
 ### Details we want to know
-- the `Boot:` version from the test screen in step 1
+- **a photo of the factory QC screen**, which is the most useful thing you can send us
 - which operating system you are on, and if Windows, whether 10 or 11
 - the model name from the label on the unit
 - the patched .bin filename and size in bytes from Properties
 - the fingerprint from the `certutil` command in step 5
 - the editor version, from its About screen
 - whether you built the file yourself or someone sent it to you
+
+**A picture of the factory QC screen.** Press and hold **BACK** and **SAVE** together while powering up the unit. Part way through the boot splash screen it will enter the factory QC screen.
+
+A photo of the whole screen is much more useful than typing the `Boot:` line out on its own. The screen reports several other version numbers alongside it, and we are still working out which of them matter, so it is better to have all of them than to find out later that we asked for the wrong one.
+
+This screen is totally safe. To leave it, either press BACK and SAVE together again, or power cycle the unit.
+
+**This is worth sending even if the mod worked perfectly for you.** So far every QC screen we have has come from someone it failed for, which makes it hard to tell whether the pattern we think we are seeing is real. A screen from a unit that updated with no trouble at all is genuinely one of the most useful things anyone could send us right now.
 
 ### If the unit will not start up
 
