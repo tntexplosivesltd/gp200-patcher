@@ -1,6 +1,6 @@
 # GP-200 Patcher
 
-A self-contained, offline browser tool for applying reverse-engineered custom firmware mods to a [Valeton GP-200 or GP-200LT](https://valetonmusic.com/) multi-effects pedal.
+A self-contained, offline browser tool for applying reverse-engineered custom firmware mods to a [Valeton GP-200 or GP-200LT](https://valeton.net/) multi-effects pedal.
 
 Read the writeup: [gp200-reversing.hashnode.dev](https://gp200-reversing.hashnode.dev/)
 
